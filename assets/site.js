@@ -77,4 +77,155 @@
       }
     });
   });
+
+  // Interactive Fig. 01: select a month to inspect the reported LHR value.
+  const trafficViz = document.querySelector('[data-viz="traffic"]');
+  if (trafficViz) {
+    const trafficData = [
+      {month:'Juni 2025', value:7978, note:'Angka Juni berada sebelum tarif diberlakukan. Data ini menunjukkan volume kendaraan, bukan profil atau tujuan perjalanannya.'},
+      {month:'Juli 2025', value:8121, note:'Angka tertinggi dalam rentang yang ditampilkan. Tarif belum diberlakukan pada bulan ini.'},
+      {month:'Agustus 2025', value:3815, note:'Tarif mulai berlaku pada 2 Agustus 2025. LHR yang dilaporkan sekitar 53,0% lebih rendah dibanding Juli; perbedaan ini tidak membuktikan tarif sebagai penyebab tunggal.'},
+      {month:'September 2025', value:2895, note:'LHR yang dilaporkan sekitar 64,4% lebih rendah dibanding Juli. Perlu data harian dan informasi faktor lain untuk menjelaskan perubahan ini.'}
+    ];
+    const period = trafficViz.querySelector('#traffic-detail-period');
+    const value = trafficViz.querySelector('#traffic-detail-value');
+    const note = trafficViz.querySelector('#traffic-detail-note');
+    const points = Array.from(trafficViz.querySelectorAll('[data-traffic-index]'));
+    const numberFormat = new Intl.NumberFormat('id-ID');
+    const selectTrafficPoint = (index) => {
+      const item = trafficData[index];
+      if (!item || !period || !value || !note) return;
+      period.textContent = item.month;
+      value.textContent = `${numberFormat.format(item.value)} kendaraan per hari`;
+      note.textContent = item.note;
+      points.forEach((point, pointIndex) => {
+        const active = pointIndex === index;
+        point.classList.toggle('is-active', active);
+        point.setAttribute('aria-pressed', String(active));
+      });
+    };
+    points.forEach((point) => {
+      const index = Number(point.dataset.trafficIndex);
+      point.addEventListener('click', () => selectTrafficPoint(index));
+      point.addEventListener('focus', () => selectTrafficPoint(index));
+      point.addEventListener('pointerenter', () => selectTrafficPoint(index));
+    });
+  }
+
+  // Generic data-table disclosure used by Fig. 01.
+  document.querySelectorAll('[data-toggle-viz-table]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-toggle-viz-table');
+      const target = targetId ? document.getElementById(targetId) : null;
+      if (!target) return;
+      const willShow = target.hidden;
+      target.hidden = !willShow;
+      button.setAttribute('aria-expanded', String(willShow));
+      button.innerHTML = willShow ? 'Sembunyikan tabel <span aria-hidden="true">−</span>' : 'Lihat tabel angka <span aria-hidden="true">＋</span>';
+    });
+  });
+
+  // Interactive Fig. 02: scenario slider recalculates cumulative toll cost.
+  const burdenViz = document.querySelector('[data-viz="burden"]');
+  if (burdenViz) {
+    const slider = burdenViz.querySelector('#burden-frequency');
+    const frequencyOutput = burdenViz.querySelector('#burden-frequency-output');
+    const totalCostOutput = burdenViz.querySelector('#burden-total-cost');
+    const sumbarRatioOutput = burdenViz.querySelector('#burden-sumbar-ratio');
+    const rows = Array.from(burdenViz.querySelectorAll('[data-burden-row]'));
+    const currency = new Intl.NumberFormat('id-ID', {style:'currency', currency:'IDR', maximumFractionDigits:0});
+    const percent = (number) => `${number.toLocaleString('id-ID', {minimumFractionDigits:2, maximumFractionDigits:2})}%`;
+    const updateBurden = () => {
+      if (!slider) return;
+      const trips = Math.max(1, Math.min(8, Number(slider.value) || 1));
+      const total = trips * 101000;
+      if (frequencyOutput) frequencyOutput.textContent = `${trips} ${trips === 1 ? 'kali' : 'kali'}`;
+      if (totalCostOutput) totalCostOutput.textContent = currency.format(total);
+      slider.setAttribute('aria-valuetext', `${trips} kali pulang-pergi per bulan`);
+      rows.forEach((row) => {
+        const expenditure = Number(row.dataset.expenditure);
+        const ratio = expenditure > 0 ? total / expenditure * 100 : 0;
+        const fill = row.querySelector('.burden-fill');
+        const label = row.querySelector('.burden-value');
+        if (fill) fill.style.width = `${Math.min(100, ratio / 60 * 100)}%`;
+        if (label) label.textContent = percent(ratio);
+        row.setAttribute('aria-label', `${row.querySelector('.burden-name strong')?.textContent || 'Wilayah'}: ${percent(ratio)} dari pengeluaran konsumsi per kapita bulanan`);
+        if (row.dataset.expenditure === '1542109' && sumbarRatioOutput) sumbarRatioOutput.textContent = percent(ratio);
+      });
+    };
+    if (slider) {
+      slider.addEventListener('input', updateBurden);
+      slider.addEventListener('change', updateBurden);
+      updateBurden();
+    }
+  }
+
+  // Interactive Fig. 03: five analytical lenses, not a quantitative scorecard.
+  const frameworkViz = document.querySelector('[data-viz="framework"]');
+  if (frameworkViz) {
+    const lensContent = {
+      use: {
+        label:'01 / USE', title:'Siapa yang benar-benar menggunakan tol?',
+        evidence:'Panel proyek mencatat LHR 7.978 kendaraan per hari pada Juni, 8.121 pada Juli, 3.815 pada Agustus, dan 2.895 pada September 2025. Angka ini menggambarkan volume, belum menjelaskan siapa yang berada di dalam kendaraan atau tujuan perjalanannya.',
+        data:'Komposisi kendaraan menurut golongan, asal–tujuan perjalanan, pola harian dan bulanan, frekuensi penggunaan, serta alasan memilih tol dibandingkan jalan lama.'
+      },
+      access: {
+        label:'02 / ACCESS', title:'Siapa yang bisa mencapai tol secara praktis?',
+        evidence:'Naskah menyebut Gerbang Tol Padang dan Kapalo Hilalang sebagai dua gerbang aktif yang dilaporkan pada Juni 2025. Rilis 19 Mei 2026 menyebut akses penghubung Lubuk Alung sepanjang 2,4 km masih dalam pembangunan dengan progres 24,06%; status setelah tanggal itu belum terkonfirmasi dalam bahan naskah.',
+        data:'Waktu tempuh melalui jaringan jalan menuju gerbang yang benar-benar beroperasi, kondisi jalan penghubung, ketersediaan moda, biaya akses, dan perubahan status akses lokal.'
+      },
+      opportunity: {
+        label:'03 / OPPORTUNITY', title:'Di mana peluang ekonomi terkonsentrasi?',
+        evidence:'Naskah menandai Batang Anai/Pasar Usang, Lubuk Alung, 2 X 11 Kayu Tanam, serta rest area KM 23 sebagai simpul yang perlu diperiksa. Fungsi ruang dan rencana konektivitas menunjukkan potensi, bukan bukti bahwa omzet atau pendapatan sudah meningkat.',
+        data:'Perubahan jumlah usaha, omzet atau indikator aktivitas, investasi, tenant dan pemasok rest area, kunjungan wisata, penciptaan kerja, serta transaksi dan sewa lahan.'
+      },
+      capture: {
+        label:'04 / CAPTURE', title:'Siapa yang punya posisi untuk menangkap peluang?',
+        evidence:'Naskah mengidentifikasi pelaku usaha mapan di pusat perdagangan, operator logistik, pemilik lahan strategis, pelaku wisata dan jasa, serta tenant/pemasok sebagai kelompok yang mungkin lebih siap secara struktural. Itu belum membuktikan mereka telah memperoleh keuntungan dari tol.',
+        data:'Data pemilik dan skala usaha, perubahan omzet, investasi, kepemilikan aset, sewa, pekerjaan, pengadaan lokal, tenant, pemasok, dan hubungan usaha dengan arus lalu lintas tol.'
+      },
+      cost: {
+        label:'05 / COST', title:'Siapa yang membayar dan menanggung biaya ruang?',
+        evidence:'Naskah menghitung tarif pulang-pergi Golongan I sebesar Rp101.000 dan membandingkannya dengan pengeluaran konsumsi per kapita. Biaya ruang juga mencakup pengadaan tanah, perubahan penghidupan, akses lokal, dan dampak lingkungan; bahan yang tersedia belum cukup untuk menjumlahkannya secara utuh.',
+        data:'Beban tarif menurut kelompok pengguna, bidang tanah dan status penguasaan, penerima kompensasi, penggarap/penyewa/buruh terdampak, perubahan mata pencaharian, serta data lingkungan dan akses.'
+      }
+    };
+    const tabs = Array.from(frameworkViz.querySelectorAll('[data-lens]'));
+    const panel = frameworkViz.querySelector('#framework-detail');
+    const label = frameworkViz.querySelector('#framework-detail-label');
+    const title = frameworkViz.querySelector('#framework-detail-title');
+    const evidence = frameworkViz.querySelector('#framework-detail-evidence');
+    const data = frameworkViz.querySelector('#framework-detail-data');
+    const selectLens = (key, moveFocus = false) => {
+      const item = lensContent[key];
+      if (!item || !panel || !label || !title || !evidence || !data) return;
+      label.textContent = item.label;
+      title.textContent = item.title;
+      evidence.textContent = item.evidence;
+      data.textContent = item.data;
+      const activeTab = tabs.find(tab => tab.dataset.lens === key);
+      panel.setAttribute('aria-labelledby', activeTab?.id || 'lens-tab-use');
+      tabs.forEach((tab) => {
+        const active = tab.dataset.lens === key;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+      });
+      if (moveFocus && activeTab) activeTab.focus();
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectLens(tab.dataset.lens));
+      tab.addEventListener('keydown', (event) => {
+        let nextIndex = index;
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === 'Home') nextIndex = 0;
+        else if (event.key === 'End') nextIndex = tabs.length - 1;
+        else return;
+        event.preventDefault();
+        selectLens(tabs[nextIndex].dataset.lens, true);
+      });
+    });
+  }
+
 })();
