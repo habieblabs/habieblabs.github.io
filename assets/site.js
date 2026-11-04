@@ -82,10 +82,10 @@
   const trafficViz = document.querySelector('[data-viz="traffic"]');
   if (trafficViz) {
     const trafficData = [
-      {month:'Juni 2025', value:7978, note:'Angka Juni berada sebelum tarif diberlakukan. Data ini menunjukkan volume kendaraan, bukan profil atau tujuan perjalanannya.'},
-      {month:'Juli 2025', value:8121, note:'Angka tertinggi dalam rentang yang ditampilkan. Tarif belum diberlakukan pada bulan ini.'},
-      {month:'Agustus 2025', value:3815, note:'Tarif mulai berlaku pada 2 Agustus 2025. LHR yang dilaporkan sekitar 53,0% lebih rendah dibanding Juli; perbedaan ini tidak membuktikan tarif sebagai penyebab tunggal.'},
-      {month:'September 2025', value:2895, note:'LHR yang dilaporkan sekitar 64,4% lebih rendah dibanding Juli. Perlu data harian dan informasi faktor lain untuk menjelaskan perubahan ini.'}
+      {month:'Juni 2025', value:7978, note:'Tarif belum diberlakukan. Angka ini menunjukkan volume, bukan profil pengguna.'},
+      {month:'Juli 2025', value:8121, note:'Angka tertinggi dalam rentang ini. Tarif belum diberlakukan.'},
+      {month:'Agustus 2025', value:3815, note:'Tarif mulai berlaku 2 Agustus. LHR sekitar 53,0% di bawah Juli; penyebab tunggal belum dapat dipastikan.'},
+      {month:'September 2025', value:2895, note:'LHR sekitar 64,4% di bawah Juli. Data bulanan ini belum cukup untuk memastikan penyebabnya.'}
     ];
     const period = trafficViz.querySelector('#traffic-detail-period');
     const value = trafficViz.querySelector('#traffic-detail-value');
@@ -166,28 +166,28 @@
     const lensContent = {
       use: {
         label:'01 / USE', title:'Siapa yang benar-benar menggunakan tol?',
-        evidence:'Panel proyek mencatat LHR 7.978 kendaraan per hari pada Juni, 8.121 pada Juli, 3.815 pada Agustus, dan 2.895 pada September 2025. Angka ini menggambarkan volume, belum menjelaskan siapa yang berada di dalam kendaraan atau tujuan perjalanannya.',
-        data:'Komposisi kendaraan menurut golongan, asal–tujuan perjalanan, pola harian dan bulanan, frekuensi penggunaan, serta alasan memilih tol dibandingkan jalan lama.'
+        evidence:'LHR yang dilaporkan: 7.978 (Juni), 8.121 (Juli), 3.815 (Agustus), dan 2.895 (September 2025). Volume tidak menunjukkan profil atau tujuan perjalanan.',
+        data:'Golongan kendaraan, asal–tujuan, pola harian, frekuensi penggunaan, dan alasan memilih tol.'
       },
       access: {
         label:'02 / ACCESS', title:'Siapa yang bisa mencapai tol secara praktis?',
-        evidence:'Naskah menyebut Gerbang Tol Padang dan Kapalo Hilalang sebagai dua gerbang aktif yang dilaporkan pada Juni 2025. Rilis 19 Mei 2026 menyebut akses penghubung Lubuk Alung sepanjang 2,4 km masih dalam pembangunan dengan progres 24,06%; status setelah tanggal itu belum terkonfirmasi dalam bahan naskah.',
-        data:'Waktu tempuh melalui jaringan jalan menuju gerbang yang benar-benar beroperasi, kondisi jalan penghubung, ketersediaan moda, biaya akses, dan perubahan status akses lokal.'
+        evidence:'Operator menyebut Gerbang Padang dan Kapalo Hilalang sebagai gerbang aktif pada Juni 2025. Rilis 19 Mei 2026 mencatat akses Lubuk Alung sepanjang 2,4 km masih dibangun; status lebih baru belum terkonfirmasi dalam bahan naskah.',
+        data:'Waktu tempuh jaringan ke gerbang aktif, kondisi jalan penghubung, moda, biaya akses, dan status akses lokal.'
       },
       opportunity: {
         label:'03 / OPPORTUNITY', title:'Di mana peluang ekonomi terkonsentrasi?',
-        evidence:'Naskah menandai Batang Anai/Pasar Usang, Lubuk Alung, 2 X 11 Kayu Tanam, serta rest area KM 23 sebagai simpul yang perlu diperiksa. Fungsi ruang dan rencana konektivitas menunjukkan potensi, bukan bukti bahwa omzet atau pendapatan sudah meningkat.',
-        data:'Perubahan jumlah usaha, omzet atau indikator aktivitas, investasi, tenant dan pemasok rest area, kunjungan wisata, penciptaan kerja, serta transaksi dan sewa lahan.'
+        evidence:'Batang Anai/Pasar Usang, Lubuk Alung, 2 X 11 Kayu Tanam, dan rest area KM 23 ditandai sebagai simpul peluang. Ini menunjukkan potensi, bukan kenaikan omzet yang telah terbukti.',
+        data:'Jumlah dan omzet usaha, investasi, tenant dan pemasok, kunjungan, pekerjaan, serta transaksi lahan.'
       },
       capture: {
         label:'04 / CAPTURE', title:'Siapa yang punya posisi untuk menangkap peluang?',
-        evidence:'Naskah mengidentifikasi pelaku usaha mapan di pusat perdagangan, operator logistik, pemilik lahan strategis, pelaku wisata dan jasa, serta tenant/pemasok sebagai kelompok yang mungkin lebih siap secara struktural. Itu belum membuktikan mereka telah memperoleh keuntungan dari tol.',
-        data:'Data pemilik dan skala usaha, perubahan omzet, investasi, kepemilikan aset, sewa, pekerjaan, pengadaan lokal, tenant, pemasok, dan hubungan usaha dengan arus lalu lintas tol.'
+        evidence:'Pelaku usaha mapan, operator logistik, pemilik lahan strategis, usaha wisata/jasa, serta tenant dan pemasok mungkin lebih siap secara struktural. Keuntungan aktual belum terbukti.',
+        data:'Skala usaha, perubahan omzet, investasi, aset, sewa, pekerjaan, pengadaan lokal, dan hubungan usaha dengan arus tol.'
       },
       cost: {
         label:'05 / COST', title:'Siapa yang membayar dan menanggung biaya ruang?',
-        evidence:'Naskah menghitung tarif pulang-pergi Golongan I sebesar Rp101.000 dan membandingkannya dengan pengeluaran konsumsi per kapita. Biaya ruang juga mencakup pengadaan tanah, perubahan penghidupan, akses lokal, dan dampak lingkungan; bahan yang tersedia belum cukup untuk menjumlahkannya secara utuh.',
-        data:'Beban tarif menurut kelompok pengguna, bidang tanah dan status penguasaan, penerima kompensasi, penggarap/penyewa/buruh terdampak, perubahan mata pencaharian, serta data lingkungan dan akses.'
+        evidence:'Tarif pulang-pergi Golongan I dihitung Rp101.000. Biaya ruang juga mencakup tanah, penghidupan, akses lokal, dan lingkungan; datanya belum cukup untuk dijumlahkan.',
+        data:'Beban menurut kelompok pengguna, bidang tanah, penerima kompensasi, penggarap/penyewa/buruh terdampak, penghidupan, dan lingkungan.'
       }
     };
     const tabs = Array.from(frameworkViz.querySelectorAll('[data-lens]'));
