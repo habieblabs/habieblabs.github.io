@@ -1,0 +1,47 @@
+/* Khusus halaman: Dari Pasar Modal ke Pasar Raya */
+.pm-essay-page { background: var(--paper, #f5f2eb); }
+.pm-main { padding: 0 0 84px; }
+.pm-article-head { width: min(920px, calc(100% - 48px)); margin: 0 auto; padding: 48px 0 28px; }
+.pm-back-link { display: inline-block; color: var(--muted, #65726b); font-size: 12px; margin: 0 0 36px; }
+.pm-back-link:hover { color: var(--accent, #b9573c); }
+.pm-eyebrow { font: 750 10px/1.5 var(--sans, Arial, sans-serif); text-transform: uppercase; letter-spacing: .15em; color: var(--muted, #65726b); margin: 0 0 14px; }
+.pm-article-head h1 { max-width: 880px; margin: 0 0 12px; color: var(--ink, #26352f); font: 400 clamp(42px, 6vw, 72px)/1.02 var(--serif, Georgia, serif); letter-spacing: -.055em; }
+.pm-subtitle { max-width: 780px; margin: 0; color: var(--muted, #65726b); font: italic clamp(19px, 2.3vw, 26px)/1.35 var(--serif, Georgia, serif); }
+.pm-byline { display:flex; align-items:center; gap:12px; margin-top:25px; padding-top:17px; border-top:1px solid var(--line, #d9d8cf); width:min(720px,100%); color:var(--ink,#26352f); }
+.pm-author-mark { display:grid; place-items:center; flex:0 0 38px; width:38px; height:38px; background:var(--green-dark,#243a32); color:var(--paper,#f5f2eb); border-radius:50%; font:italic 20px Georgia,serif; }
+.pm-byline strong { display:block; font:700 12px var(--sans,Arial,sans-serif); }
+.pm-byline small { display:block; margin-top:3px; color:var(--muted,#65726b); font:10px var(--sans,Arial,sans-serif); }
+.pm-flow { width:min(1120px, calc(100% - 48px)); margin:0 auto; }
+.pm-flow > p { width:min(730px,100%); margin:0 auto 1.28em; color:var(--ink,#26352f); font:18px/1.86 Georgia,"Times New Roman",serif; letter-spacing:-.006em; }
+.pm-flow > p.pm-dropcap:first-letter { float:left; font:4.1em/.78 Georgia,serif; color:#b9573c; padding:.12em .12em 0 0; }
+.pm-flow > p strong { font-weight:700; }
+.pm-flow > p em { font-style:italic; }
+.pm-photo { width:100%; margin:48px 0 50px; }
+.pm-photo img { display:block; width:100%; height:auto; max-height:760px; object-fit:cover; }
+.pm-photo figcaption, .pm-comic figcaption, .pm-chart-caption { margin:10px auto 0; width:min(730px,100%); color:var(--muted,#65726b); font:11px/1.55 var(--sans,Arial,sans-serif); }
+.pm-comic { width:min(1040px,100%); margin:50px auto 60px; }
+.pm-comic img { display:block; width:100%; height:auto; border:1px solid rgba(38,53,47,.18); }
+.pm-comic figcaption { text-align:right; font-size:10px; }
+.pm-chart-figure { width:100%; margin:58px 0 54px; }
+.pm-chart-caption { width:min(900px,100%); }
+.pm-endmark { width:min(730px,100%); margin:55px auto 36px; color:#b9573c; text-align:center; font-size:20px; }
+.pm-author-card { width:min(730px,100%); margin:0 auto; padding:20px 0; border-top:1px solid var(--line,#d9d8cf); border-bottom:1px solid var(--line,#d9d8cf); display:flex; align-items:center; gap:16px; }
+.pm-author-card .pm-eyebrow { margin:0 0 4px; font-size:9px; }
+.pm-author-card strong { font:700 13px Arial,Helvetica,sans-serif; }
+.pm-author-card p:last-child { margin:4px 0 0; color:var(--muted,#65726b); font:12px/1.5 Arial,Helvetica,sans-serif; }
+.pm-article-actions { width:min(730px,100%); margin:22px auto 0; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+@media (max-width:800px) {
+  .pm-article-head { padding-top:34px; }
+  .pm-comic { width:100%; }
+}
+@media (max-width:600px) {
+  .pm-article-head { width:calc(100% - 36px); padding-top:27px; }
+  .pm-article-head h1 { font-size:43px; }
+  .pm-subtitle { font-size:19px; }
+  .pm-flow { width:calc(100% - 32px); }
+  .pm-flow > p { font-size:17px; line-height:1.82; }
+  .pm-photo { margin:36px 0 39px; }
+  .pm-photo img { max-height:none; }
+  .pm-comic { margin:42px auto 48px; }
+  .pm-article-actions { align-items:flex-start; flex-direction:column; }
+}
