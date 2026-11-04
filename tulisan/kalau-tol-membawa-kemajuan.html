@@ -36,8 +36,8 @@
       <figure class="interactive-figure" data-viz="traffic" aria-labelledby="traffic-viz-title">
         <div class="interactive-panel">
           <div class="viz-topline"><span>FIGUR 01 <i>/</i> USE</span><span>JUNI–SEPTEMBER 2025</span></div>
-          <h3 id="traffic-viz-title">Lalu lintas turun setelah tarif diberlakukan</h3>
-          <p class="viz-intro">Realisasi Lalu Lintas Harian (LHR) yang dilaporkan dalam panel proyek, kendaraan per hari. Pilih bulan untuk membaca angkanya.</p>
+          <h3 id="traffic-viz-title">Lalu lintas harian, Juni–September 2025</h3>
+          <p class="viz-intro">Rata-rata kendaraan per hari. Tarif mulai berlaku pada 2 Agustus 2025.</p>
           <div class="traffic-chart" role="group" aria-label="Grafik lalu lintas harian menurut bulan">
             <button class="traffic-point" type="button" data-traffic-index="0" aria-pressed="false" aria-label="Juni 2025, 7.978 kendaraan per hari">
               <span class="traffic-value">7.978</span><span class="traffic-track"><span class="traffic-fill" style="--bar-height:84.0%"></span></span><span class="traffic-month">Juni</span>
@@ -55,7 +55,7 @@
           <div class="traffic-phase-note"><span class="phase-before">Juni–Juli: sebelum tarif</span><span class="phase-after">Agustus–September: tarif berlaku mulai 2 Agustus 2025</span></div>
           <div class="viz-detail" aria-live="polite" aria-atomic="true">
             <div><span class="viz-detail-kicker" id="traffic-detail-period">Juli 2025</span><strong id="traffic-detail-value">8.121 kendaraan per hari</strong></div>
-            <p id="traffic-detail-note">Angka tertinggi dalam rentang yang ditampilkan. Tarif belum diberlakukan pada bulan ini.</p>
+            <p id="traffic-detail-note">Angka tertinggi dalam rentang yang ditampilkan.</p>
           </div>
           <div class="viz-tools"><button class="viz-toggle" type="button" data-toggle-viz-table="traffic-table" aria-controls="traffic-table" aria-expanded="false">Lihat tabel angka <span aria-hidden="true">＋</span></button></div>
           <div class="viz-table-wrap" id="traffic-table" hidden>
@@ -63,9 +63,9 @@
               <tr><td>Juni 2025</td><td>7.978</td><td>Sebelum tarif</td></tr><tr><td>Juli 2025</td><td>8.121</td><td>Sebelum tarif</td></tr><tr><td>Agustus 2025</td><td>3.815</td><td>Tarif berlaku mulai 2 Agustus</td></tr><tr><td>September 2025</td><td>2.895</td><td>Setelah tarif diberlakukan</td></tr>
             </tbody></table>
           </div>
-          <p class="viz-source"><strong>Catatan sumber:</strong> Angka Juni–September berasal dari salinan panel proyek bertanggal 30 September 2025 yang terindeks di Scribd; belum diverifikasi langsung dari operator. Dibanding Juli, LHR Agustus turun sekitar 53,0% dan September sekitar 64,4%. Perubahan ini tidak membuktikan tarif sebagai penyebab tunggal.</p>
+          <details class="viz-notes"><summary>Sumber dan catatan data</summary><p>Angka Juni–September berasal dari salinan panel proyek bertanggal 30 September 2025 yang terindeks di Scribd; belum diverifikasi langsung dari operator. Dibanding Juli, LHR Agustus turun sekitar 53,0% dan September sekitar 64,4%. Perubahan ini tidak membuktikan tarif sebagai penyebab tunggal.</p></details>
         </div>
-        <figcaption>Perubahan Lalu Lintas Harian Tol Padang–Sicincin, Juni–September 2025. Pilih batang untuk melihat angka per bulan.</figcaption>
+        <figcaption>Lalu lintas harian yang dilaporkan, kendaraan per hari.</figcaption>
       </figure>
       <p>Inilah perbedaan antara mengetahui bahwa jalan tol digunakan dan mengetahui siapa yang menggunakannya. Untuk pertanyaan pertama, jumlah kendaraan dapat menjadi permulaan. Untuk pertanyaan kedua, kita memerlukan data yang lebih terurai, seperti komposisi kendaraan menurut golongan, jumlah kendaraan barang dan penumpang jika tersedia, pola harian dan bulanan, asal-tujuan perjalanan, serta alasan orang memilih tol dibandingkan jalan lama. Data golongan kendaraan pun tidak otomatis menunjukkan tujuan perjalanan, sebab mobil pribadi belum tentu perjalanan wisata, dan truk belum tentu membawa komoditas lokal.</p>
       <p>Sebelum data itu tersedia, kita baru bisa menyatakan bahwa tol memiliki pengguna dan lalu lintasnya berubah menurut waktu serta kondisi operasi. Kita belum cukup tahu kelompok mana yang paling bergantung pada tol, kelompok mana yang menggunakan hanya ketika perjalanan tertentu, dan kelompok mana yang tetap bertahan di jalan nasional karena tarif atau akses.</p>
@@ -101,10 +101,10 @@
       <figure class="interactive-figure" data-viz="burden" aria-labelledby="burden-viz-title">
         <div class="interactive-panel">
           <div class="viz-topline"><span>FIGUR 02 <i>/</i> COST</span><span>PERBANDINGAN 2025</span></div>
-          <h3 id="burden-viz-title">Tarif yang sama, proporsi beban yang berbeda</h3>
-          <p class="viz-intro">Ubah frekuensi perjalanan pulang-pergi untuk melihat bagaimana akumulasi tarif dibandingkan dengan rata-rata pengeluaran konsumsi per kapita bulanan.</p>
+          <h3 id="burden-viz-title">Berapa besar tarif dalam pengeluaran bulanan?</h3>
+          <p class="viz-intro">Tarif pulang-pergi Rp101.000 dibandingkan dengan pengeluaran konsumsi per kapita, 2025.</p>
           <div class="burden-control">
-            <div class="burden-control-heading"><label for="burden-frequency">Jumlah perjalanan pulang-pergi per bulan</label><output id="burden-frequency-output" for="burden-frequency">1 kali</output></div>
+            <div class="burden-control-heading"><label for="burden-frequency">Perjalanan pulang-pergi per bulan</label><output id="burden-frequency-output" for="burden-frequency">1 kali</output></div>
             <input id="burden-frequency" type="range" min="1" max="8" step="1" value="1" aria-valuetext="1 kali pulang-pergi per bulan">
             <div class="range-ends"><span>1 kali</span><span>8 kali</span></div>
           </div>
@@ -131,10 +131,9 @@
             </div>
           </div>
           <div class="burden-axis-note"><span>0%</span><span>15%</span><span>30%</span><span>45%</span><span>60%</span></div>
-          <p class="viz-caveat"><strong>Cara membaca:</strong> satu perjalanan pulang-pergi dihitung Rp101.000 untuk kendaraan Golongan I. Slider adalah simulasi frekuensi, bukan data frekuensi perjalanan aktual. Perbandingan ini memakai pengeluaran per kapita bulanan sebagai pembanding kasar, bukan pendapatan, anggaran transportasi, atau ukuran langsung kemampuan membayar rumah tangga. Tarif kendaraan juga bukan otomatis biaya per penumpang.</p>
-          <p class="viz-source"><strong>Sumber:</strong> Data pengeluaran BPS 2025 yang digunakan dalam naskah; perhitungan penulis. *Proksi Jabodetabek adalah rata-rata sederhana DKI Jakarta, Jawa Barat, dan Banten, bukan angka resmi khusus kawasan Jabodetabek.</p>
+          <details class="viz-notes"><summary>Sumber, asumsi, dan batas perbandingan</summary><p>Satu perjalanan pulang-pergi dihitung Rp101.000 untuk kendaraan Golongan I. Slider adalah simulasi frekuensi, bukan data frekuensi perjalanan aktual. Perbandingan memakai pengeluaran per kapita bulanan sebagai pembanding kasar, bukan pendapatan, anggaran transportasi, atau ukuran langsung kemampuan membayar rumah tangga. Tarif kendaraan juga bukan otomatis biaya per penumpang.</p><p>Sumber: data pengeluaran BPS 2025 yang digunakan dalam naskah; perhitungan penulis. *Proksi Jabodetabek adalah rata-rata sederhana DKI Jakarta, Jawa Barat, dan Banten, bukan angka resmi khusus kawasan Jabodetabek.</p></details>
         </div>
-        <figcaption>Simulasi tarif pulang-pergi Tol Padang–Sicincin sebagai proporsi pengeluaran konsumsi per kapita bulanan. Ubah jumlah perjalanan untuk mengeksplorasi skenario.</figcaption>
+        <figcaption>Simulasi tarif pulang-pergi sebagai proporsi pengeluaran konsumsi per kapita bulanan.</figcaption>
       </figure>
       <p>Ini memang tidak membuktikan bahwa tol hanya bisa digunakan orang kaya. Tetapi ia memberi gambaran bahwa tarif adalah biaya yang cukup berarti jika dibandingkan dengan sebagian tolok ukur ekonomi sehari-hari, khususnya bagi penggunaan berulang.</p>
       <p>Perlu diingat pula, tarif dikenakan kepada kendaraan dan perjalanan, bukan kepada tiap penumpang secara otomatis. Dalam perjalanan bersama, biaya tersebut dapat dibagi ke beberapa orang, dalam perjalanan seorang diri, beban per penumpang berbeda. Inilah alasan cerita ibu saya tadi menarik. Jika penumpang diminta menambah Rp3.000 untuk menggunakan tol, kita perlu mengetahui bagaimana keputusan itu dibuat, apakah pilihan jalan non-tol benar-benar tersedia, dan bagaimana penghematan waktu atau operasional dibagi antara operator dengan penumpang.</p>
@@ -152,8 +151,8 @@
       <figure class="interactive-figure" data-viz="framework" aria-labelledby="framework-viz-title">
         <div class="interactive-panel">
           <div class="viz-topline"><span>FIGUR 03 <i>/</i> KERANGKA ANALISIS</span><span>LIMA PERTANYAAN</span></div>
-          <h3 id="framework-viz-title">Dari jalan yang dibangun ke manfaat yang diterima</h3>
-          <p class="viz-intro">Konektivitas fisik tidak otomatis menghasilkan manfaat ekonomi yang terbagi. Pilih satu lensa untuk melihat pertanyaan, petunjuk dalam naskah, dan kebutuhan datanya.</p>
+          <h3 id="framework-viz-title">Lima lensa untuk membaca distribusi manfaat</h3>
+          <p class="viz-intro">Pilih satu dimensi untuk melihat petunjuk dan data yang masih dibutuhkan.</p>
           <div class="framework-tabs" role="tablist" aria-label="Lima lensa analisis distribusional">
             <button class="framework-tab is-active" type="button" role="tab" id="lens-tab-use" aria-controls="framework-detail" aria-selected="true" tabindex="0" data-lens="use"><span>01</span><strong>USE</strong><small>Penggunaan</small></button>
             <button class="framework-tab" type="button" role="tab" id="lens-tab-access" aria-controls="framework-detail" aria-selected="false" tabindex="-1" data-lens="access"><span>02</span><strong>ACCESS</strong><small>Akses</small></button>
@@ -163,12 +162,12 @@
           </div>
           <section class="framework-detail" id="framework-detail" role="tabpanel" aria-labelledby="lens-tab-use" tabindex="0">
             <div class="framework-detail-heading"><span class="viz-detail-kicker" id="framework-detail-label">01 / USE</span><h4 id="framework-detail-title">Siapa yang benar-benar menggunakan tol?</h4></div>
-            <div class="framework-detail-columns"><div><h5>Petunjuk dalam naskah</h5><p id="framework-detail-evidence">Panel proyek mencatat LHR 7.978 kendaraan per hari pada Juni, 8.121 pada Juli, 3.815 pada Agustus, dan 2.895 pada September 2025. Angka ini menggambarkan volume, belum menjelaskan siapa yang berada di dalam kendaraan atau tujuan perjalanannya.</p></div><div><h5>Data yang masih dibutuhkan</h5><p id="framework-detail-data">Komposisi kendaraan menurut golongan, asal–tujuan perjalanan, pola harian dan bulanan, frekuensi penggunaan, serta alasan memilih tol dibandingkan jalan lama.</p></div></div>
+            <div class="framework-detail-columns"><div><h5>Petunjuk dalam naskah</h5><p id="framework-detail-evidence">LHR yang dilaporkan: 7.978 (Juni), 8.121 (Juli), 3.815 (Agustus), dan 2.895 (September 2025). Volume tidak menunjukkan profil atau tujuan perjalanan.</p></div><div><h5>Data yang masih dibutuhkan</h5><p id="framework-detail-data">Golongan kendaraan, asal–tujuan, pola harian, frekuensi penggunaan, dan alasan memilih tol.</p></div></div>
           </section>
-          <p class="framework-thesis">Peluang bukan bukti bahwa manfaat telah diterima.</p>
-          <p class="viz-source">Kerangka konseptual berdasarkan lima dimensi dalam esai. Panel ini merangkum pertanyaan analitis dan tidak menyatakan bahwa dampak atau penerimaan manfaat telah terbukti.</p>
+          <p class="framework-thesis">Peluang bukan bukti penerimaan manfaat.</p>
+          <p class="framework-footnote">Kerangka konseptual. Bukan pengukuran dampak.</p>
         </div>
-        <figcaption>Kerangka analisis distribusional Tol Padang–Sicincin. Pilih setiap lensa untuk menelusuri pertanyaan, petunjuk, dan data yang masih diperlukan.</figcaption>
+        <figcaption>Lima dimensi untuk menguji siapa yang menggunakan, memperoleh peluang, dan menanggung biaya.</figcaption>
       </figure>
       <h2 id="kemajuan-harus-sampai-kepada-penerimanya">Kemajuan harus sampai kepada penerimanya</h2>
       <p>Saya tidak ingin sok tahu menyimpulkan bahwa sopir bus dalam cerita tadi tidak memahami ekonomi. Bisa jadi operator memiliki pertimbangan biaya yang masuk akal. Bisa jadi penumpang merasa tambahan ongkos sepadan dengan waktu yang dihemat. Bisa juga biaya dialihkan kepada penumpang sementara manfaat operasional lebih banyak dinikmati operator. Kita perlu bertanya dan menguji, bukan menebak.</p>
