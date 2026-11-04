@@ -4,3 +4,137 @@
 @media(max-width:850px){.home-hero{grid-template-columns:1fr;gap:36px;padding-top:60px}.hero-art,.landscape-svg{min-height:340px}.featured-card{grid-template-columns:1fr}.featured-visual{min-height:300px}.featured-copy{min-height:335px}.article-layout{grid-template-columns:1fr;gap:24px}.article-aside{position:static;order:0}.toc-card nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 20px}.aside-note{display:none}.article-body{max-width:var(--article-width);margin-inline:auto}.article-cover{margin-bottom:35px}.article-cover img{max-height:none;object-fit:contain}}
 @media(max-width:600px){.wrap{width:calc(100% - 36px)}.header-inner{width:calc(100% - 36px);height:66px}.brand-name{font-size:18px}.nav a{font-size:11px}.home-hero{padding-top:48px;padding-bottom:49px}.hero-copy h1{font-size:48px}.hero-intro{font-size:19px}.hero-art,.landscape-svg{min-height:290px}.featured-section{padding-top:32px;padding-bottom:52px}.section-heading h2{font-size:30px}.featured-visual{min-height:205px}.featured-copy{padding:23px;min-height:0}.featured-copy h3{font-size:29px}.card-meta{margin-top:15px}.card-meta .text-link{margin-left:0}.note-section{padding:48px 24px}.archive-teaser{align-items:flex-start;flex-direction:column;padding-top:45px;padding-bottom:53px}.archive-teaser h2{font-size:28px}.button-link{white-space:normal}.footer-inner{width:calc(100% - 36px)}.footer-bottom{flex-direction:column;gap:3px}.archive-page{padding-top:48px;padding-bottom:65px}.page-intro h1{font-size:46px}.archive-item{grid-template-columns:92px minmax(0,1fr) 20px;gap:14px;padding:21px 0;align-items:start}.archive-thumb img{height:88px}.archive-item h2{font-size:20px}.archive-item-copy .eyebrow{font-size:8px;letter-spacing:.08em}.archive-subtitle{font-size:12px}.archive-item-copy>p:not(.eyebrow):not(.archive-subtitle){display:none}.archive-meta{flex-direction:column;gap:1px}.archive-arrow{font-size:19px}.archive-bottom{align-items:flex-start;flex-direction:column}.article-top{padding-top:25px}.back-link{margin-bottom:30px}.article-top h1{font-size:39px}.article-subtitle{font-size:17px}.article-cover{width:100%;margin-bottom:26px}.article-cover figcaption{padding-inline:18px}.article-layout{padding-bottom:55px}.article-body{font-size:17px;line-height:1.8}.article-body .article-intro{font-size:18px}.article-body h2{font-size:23px;margin-top:2em}.toc-card nav{grid-template-columns:1fr 1fr}.toc-card nav a{font-size:11px}.data-visual{margin-inline:-2px;padding:16px}.visual-header h3{font-size:22px}.visual-number{font-size:8px}.chart-legend{align-items:flex-start}.text-button{margin-left:0;flex-basis:100%;text-align:left;margin-top:5px}.article-actions{align-items:flex-start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+
+/* ------------------------------------------------------------
+   HOMEPAGE EDITORIAL REFRESH
+   Scope: home page only. Archive and article styles remain intact.
+   ------------------------------------------------------------ */
+.home-page .home-hero {
+  grid-template-columns: minmax(0, 1.02fr) minmax(300px, .98fr);
+  gap: clamp(42px, 6.8vw, 92px);
+  align-items: center;
+  padding-top: clamp(68px, 8.5vw, 112px);
+  padding-bottom: clamp(68px, 8vw, 100px);
+}
+.home-page .hero-copy { max-width: 650px; }
+.home-page .hero-copy h1 {
+  font-size: clamp(54px, 7.1vw, 88px);
+  line-height: .98;
+  letter-spacing: -.072em;
+  margin-bottom: 27px;
+}
+.home-page .hero-intro {
+  max-width: 440px;
+  font-size: clamp(19px, 1.8vw, 22px);
+  line-height: 1.5;
+}
+.home-page .hero-art.hero-photo {
+  min-height: 0;
+  height: auto;
+  border: 0;
+  overflow: visible;
+  background: transparent;
+}
+.home-page .hero-art.hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+}
+.home-page .featured-section {
+  padding-top: 52px;
+  padding-bottom: clamp(68px, 8vw, 100px);
+}
+.home-page .section-heading { margin-bottom: 25px; }
+.home-page .featured-card {
+  display: block;
+  border: 0;
+  background: transparent;
+}
+.home-page .featured-visual {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 16 / 7.4;
+  overflow: hidden;
+  background: var(--green-dark);
+}
+.home-page .featured-visual img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.home-page .featured-copy {
+  width: min(100%, 790px);
+  min-height: 0;
+  margin: 0 auto;
+  padding: clamp(30px, 4.8vw, 55px) 0 0;
+  align-items: center;
+  text-align: center;
+}
+.home-page .featured-copy .eyebrow { margin-bottom: 14px; }
+.home-page .featured-copy h3 {
+  max-width: 760px;
+  font-size: clamp(32px, 4.8vw, 54px);
+  line-height: 1.08;
+  margin-bottom: 13px;
+}
+.home-page .featured-subtitle {
+  font-size: clamp(16px, 1.8vw, 19px);
+  margin-bottom: 17px;
+}
+.home-page .featured-excerpt {
+  max-width: 650px;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+.home-page .card-meta {
+  justify-content: center;
+  gap: 12px 22px;
+  padding-top: 17px;
+}
+.home-page .card-meta .text-link { margin-left: 0; }
+.home-page .note-section {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: clamp(54px, 7vw, 78px) max(24px, calc((100% - 850px) / 2));
+}
+.home-page .note-section blockquote { max-width: 790px; }
+.home-page .archive-teaser {
+  padding-top: clamp(54px, 7vw, 76px);
+  padding-bottom: clamp(58px, 7vw, 82px);
+}
+
+@media (max-width: 850px) {
+  .home-page .home-hero {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-top: 60px;
+    padding-bottom: 64px;
+  }
+  .home-page .hero-copy { max-width: 720px; }
+  .home-page .hero-art.hero-photo { width: 100%; }
+  .home-page .hero-art.hero-photo img { width: 100%; }
+  .home-page .featured-visual { aspect-ratio: 16 / 9; }
+}
+@media (max-width: 600px) {
+  .home-page .home-hero { padding-top: 46px; padding-bottom: 48px; gap: 30px; }
+  .home-page .hero-copy h1 { font-size: clamp(43px, 12vw, 58px); }
+  .home-page .hero-intro { font-size: 18px; }
+  .home-page .featured-section { padding-top: 34px; padding-bottom: 55px; }
+  .home-page .featured-copy { padding-top: 27px; }
+  .home-page .featured-copy h3 { font-size: 31px; }
+  .home-page .featured-excerpt { font-size: 14px; }
+  .home-page .card-meta { align-items: center; }
+  .home-page .note-section { padding: 48px 22px; }
+  .home-page .archive-teaser { padding-top: 48px; padding-bottom: 55px; }
+}
